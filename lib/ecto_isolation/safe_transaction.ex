@@ -20,7 +20,7 @@ defmodule EctoIsolation.SafeTransaction do
         :ok
     end
     IO.puts "#{name}: Selecting."
-    code = Repo.one(from c in Coupon, select: c.code, where: c.code == "foo")
+    _code = Repo.one(from c in Coupon, select: c.code, where: c.code == "foo")
     send(parent, {self(), :done})
 
     receive do
